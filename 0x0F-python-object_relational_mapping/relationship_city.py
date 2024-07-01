@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-'''task 15 db tables classes'''
+'''task 15 model script'''
 
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
+from relationship_state import Base
+from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
-Base = declarative_base()
 
-
-class State(Base):
-    '''state class for the state table'''
-    __tablename__ = "states"
-    id = Column(Integer, primary_key=True, nullable=False,
-                autoincrement=True, unique=True)
+class City(Base):
+    '''City model for my db'''
+    __tablename__ = 'cities'
+    id = Column(Integer, unique=True, nullable=False,
+                autoincrement=True, primary_key=True)
     name = Column(String(128), nullable=False)
-    cities = relationship('City', back_populates='state',
-                          cascade='all, delete, delete-orphan')
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
+    state = relationship('State', back_populates='cities')
