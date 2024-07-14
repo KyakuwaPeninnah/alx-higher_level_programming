@@ -1,1 +1,1 @@
-0x0E. SQL - More queries in SQL
+0x0E. SQL - More queries in SQL discussed
