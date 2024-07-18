@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''task 3 script'''
+'''Python script that sends a request to the URL '''
 
 if __name__ == '__main__':
     import sys
